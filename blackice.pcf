@@ -1,0 +1,30 @@
+###############################################################################
+#                                                                             #
+# Copyright 2016 myStorm Copyright and related                                #
+# rights are licensed under the Solderpad Hardware License, Version 0.51      #
+# (the “License”); you may not use this file except in compliance with        #
+# the License. You may obtain a copy of the License at                        #
+# http://solderpad.org/licenses/SHL-0.51. Unless required by applicable       #
+# law or agreed to in writing, software, hardware and materials               #
+# distributed under this License is distributed on an “AS IS” BASIS,          #
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or             #
+# implied. See the License for the specific language governing                #
+# permissions and limitations under the License.                              #
+#                                                                             #
+###############################################################################
+
+# User Constraint File for myStorm
+
+#pmod 1 GPIO
+set_io o_UART_TX 85 # i_tx
+set_io i_UART_RX 88 # i_rx
+
+# Onboard 100Mhz oscillator
+set_io i_Clk 129
+
+### LED Pins:
+set_io o_LED_1 70
+set_io o_LED_2 68
+set_io o_LED_3 67
+set_io o_LED_4 71
+
