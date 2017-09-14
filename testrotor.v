@@ -40,13 +40,13 @@ module testrotor();
 		reset = 1;
 		#10
 		reset = 0;
-		for (i = 0; i < 30; i = i + 1) 		
+		for (i = 0; i < 128; i = i + 1) 		
 		begin
 		#10
 			rotate = 1;
 		#10
 			rotate = 0;
-		#10
+		#20
 			$display("Rotors [%c] [%c] [%c]",rotor1+65,rotor2+65,rotor3+65);
 		end
 
