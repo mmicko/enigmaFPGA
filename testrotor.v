@@ -1,7 +1,6 @@
 module testrotor();	
 	reg [2:0] rotor_type_3 = 3'b010;
 	reg [2:0] rotor_type_2 = 3'b001;
-	reg [2:0] rotor_type_1 = 3'b000;
 
 	reg [4:0] rotor_start_3 = 5'b00000;
 	reg [4:0] rotor_start_2 = 5'b00000;
@@ -25,7 +24,7 @@ module testrotor();
 	
 	rotor rotorcontrol(.clock(i_clock),.rotor1(rotor1),.rotor2(rotor2),.rotor3(rotor3),
 	        .reset(reset),.rotate(rotate),
-	        .rotor_type_1(rotor_type_1),.rotor_type_2(rotor_type_2),.rotor_type_3(rotor_type_3),
+	        .rotor_type_2(rotor_type_2),.rotor_type_3(rotor_type_3),
 		    .rotor_start_1(rotor_start_1),.rotor_start_2(rotor_start_2),.rotor_start_3(rotor_start_3)
 			);
 	
