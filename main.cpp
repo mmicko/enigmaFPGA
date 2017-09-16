@@ -157,7 +157,7 @@ int main(int argc, char **argv, char **env)
 	top->i_clock ^= 1; top->eval();
 	top->i_clock ^= 1; top->eval();
 
-	for (int i=0;i<1000;i++)
+	for (int i=0;i<20;i++)
 	{
 		top->i_inputData = 'A';
 		top->i_ready = 1;
@@ -171,6 +171,9 @@ int main(int argc, char **argv, char **env)
 		}
 
 		char val = encode('A');
+
+		cout << "output is " << top->o_outputData << std::endl;
+
 		if (val != top->o_outputData) {
 			cout << "error : iteration " << i << " output is " << top->o_outputData << " and expected is " << val << std::endl;
 			//break;
