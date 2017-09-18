@@ -2,6 +2,9 @@
 
 Enigma in FPGA, made for learning Verilog as part of presentation on BalcCon 2017.
 
+Version of code from conference is at separate branch (Balccon2017):
+https://github.com/mmicko/enigmafpga/tree/Balccon2017
+
 Due to limitation of presentation uart_rx and uart_tx modules are used from :
 https://www.nandland.com/vhdl/modules/module-uart-serial-port-rs232.html
 
