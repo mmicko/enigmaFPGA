@@ -10,10 +10,10 @@ rotors.append(['F','K','Q','H','T','L','X','O','C','B','J','S','P','D','Z','R','
 
 for rotor in rotors:
     for code in rotor:
-        print format(ord(code)-65, '02x')
+        print(format(ord(code)-65, '02x'))
 
 for rotor in rotors:
 	for num in range(0, 26):
 		for i in range(0, 26):
 			if (rotor[i]==chr(num+65)):
-				print format(i, '02x')
+				print(format(i, '02x'))
