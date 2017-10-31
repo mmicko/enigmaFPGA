@@ -1,0 +1,43 @@
+CAPI=1
+[main]
+name = ::enigmaFPGA:0
+backend = icestorm
+simulators = icarus isim modelsim
+
+[fileset rtl]
+files =
+ enigma_top.v
+ state_machine.v
+ encode.v rotor.v
+ encodeASCII.v
+ decodeASCII.v
+ rotorEncode.v
+ reflectorEncode.v
+ plugboardEncode.v
+ checkKnockpoints.v
+ hex_to_7seg.v
+ uart_tx.v
+ uart_rx.v
+ generate.py[file_type=user]
+file_type = verilogSource
+
+[fileset rtl_tb]
+files = test.v[file_type=verilogSource]
+usage = sim
+
+[fileset contraints]
+files = Go_Board_Constraints.pcf[file_type=PCF]
+
+[icestorm]
+top_module = enigma_top
+yosys_synth_options = -abc2 -nocarry
+arachne_pnr_options = -d 1k -P vq100
+
+[simulator]
+toplevel = test
+
+[scripts]
+pre_build_scripts = gen_rotors_mem.sh
+pre_synth_scripts = gen_rotors_mem.sh
+
+[parameter rotors_init_file]
