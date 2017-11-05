@@ -172,10 +172,10 @@ int main(int argc, char **argv, char **env)
 
 		char val = encode('A');
 
-		cout << "output is " << top->o_outputData << std::endl;
+		std::cout << "output is " << top->o_outputData << std::endl;
 
 		if (val != top->o_outputData) {
-			cout << "error : iteration " << i << " output is " << top->o_outputData << " and expected is " << val << std::endl;
+			std::cout << "error : iteration " << i << " output is " << top->o_outputData << " and expected is " << val << std::endl;
 			//break;
 		}
 		top->i_clock ^= 1; top->eval();

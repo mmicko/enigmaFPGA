@@ -43,4 +43,4 @@ run: obj_dir/Venigma
 
 obj_dir/Venigma: rotors.mem state_machine.v encode.v rotor.v encodeASCII.v decodeASCII.v rotorEncode.v reflectorEncode.v plugboardEncode.v checkKnockpoints.v main.cpp
 	verilator_bin -Wall --cc enigma.vlt state_machine.v encode.v rotor.v encodeASCII.v decodeASCII.v rotorEncode.v reflectorEncode.v plugboardEncode.v checkKnockpoints.v --exe main.cpp
-	make -C obj_dir -j -f Venigma.mk Venigma VERILATOR_ROOT=C:/msys64/opt/share/verilator
+	make -C obj_dir -j -f Venigma.mk Venigma
