@@ -1,0 +1,16 @@
+/.vscode
+/obj_dir
+/abc.history
+/enigma.bin
+/enigma.blif
+/enigma.out
+/enigma.txt
+/enigma.vcd
+/rotors.mem
+
+*.dblite
+*.asc
+*.bin
+*.blif
+*.out
+*.vcd
