@@ -6,6 +6,7 @@ blackice: enigma_bi.bin
 
 test: enigma.out
 	vvp enigma.out
+	covered report cov.cdd
 
 testrotor: rotor.out
 	vvp rotor.out
@@ -23,7 +24,8 @@ enigma_bi.bin: rotors.mem enigma_top_bi.v state_machine.v encode.v rotor.v encod
 	icetime -d hx8k -P tq144:4k enigma_bi.txt
 
 enigma.out: rotors.mem test.v state_machine.v encode.v rotor.v encodeASCII.v decodeASCII.v rotorEncode.v reflectorEncode.v plugboardEncode.v checkKnockpoints.v
-	iverilog -o enigma.out test.v state_machine.v encode.v rotor.v encodeASCII.v decodeASCII.v rotorEncode.v reflectorEncode.v plugboardEncode.v checkKnockpoints.v
+	covered score -v test.v -v state_machine.v -v encode.v -v rotor.v -v encodeASCII.v -v decodeASCII.v -v rotorEncode.v -v reflectorEncode.v -v plugboardEncode.v -v checkKnockpoints.v -t test -vpi
+	iverilog -m /usr/lib/x86_64-linux-gnu/covered/covered -o enigma.out test.v state_machine.v encode.v rotor.v encodeASCII.v decodeASCII.v rotorEncode.v reflectorEncode.v plugboardEncode.v checkKnockpoints.v covered_vpi.v
 
 rotor.out: testrotor.v rotor.v checkKnockpoints.v
 	iverilog -o rotor.out testrotor.v rotor.v checkKnockpoints.v
@@ -36,6 +38,7 @@ rotors.mem: generate.py
 
 clean:
 	$(RM) -f enigma.blif enigma.txt enigma.bin enigma_bi.blif enigma_bi.txt enigma_bi.bin enigma.out rotor.out abc.history enigma.vcd testrotor.vcd rotors.mem
+	$(RM) -f cov.cdd covered_vpi.v covered_vpi.tab
 	$(RM) -f -r obj_dir
 
 run: obj_dir/Venigma

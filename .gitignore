@@ -16,3 +16,5 @@
 *.vcd
 vlt_coverage.dat
 coverage.info
+cov.cdd
+covered_vpi.*
