@@ -41,6 +41,11 @@ clean:
 run: obj_dir/Venigma
 	obj_dir/Venigma
 
+coverage: obj_dir/Venigma verilated_cov_2_lcov.py
+	obj_dir/Venigma
+	python3 verilated_cov_2_lcov.py vlt_coverage.dat > coverage.info
+	genhtml coverage.info --output-directory coverage_html
+
 obj_dir/Venigma: rotors.mem state_machine.v encode.v rotor.v encodeASCII.v decodeASCII.v rotorEncode.v reflectorEncode.v plugboardEncode.v checkKnockpoints.v main.cpp
-	verilator_bin -Wall --cc enigma.vlt state_machine.v encode.v rotor.v encodeASCII.v decodeASCII.v rotorEncode.v reflectorEncode.v plugboardEncode.v checkKnockpoints.v --exe main.cpp
+	verilator_bin --coverage --trace -Wall --cc enigma.vlt state_machine.v encode.v rotor.v encodeASCII.v decodeASCII.v rotorEncode.v reflectorEncode.v plugboardEncode.v checkKnockpoints.v --exe main.cpp
 	make -C obj_dir -j -f Venigma.mk Venigma

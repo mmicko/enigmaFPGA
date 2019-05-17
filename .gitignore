@@ -7,10 +7,12 @@
 /enigma.txt
 /enigma.vcd
 /rotors.mem
-
+/coverage_html
 *.dblite
 *.asc
 *.bin
 *.blif
 *.out
 *.vcd
+vlt_coverage.dat
+coverage.info

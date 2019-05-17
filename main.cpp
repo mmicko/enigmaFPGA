@@ -2,6 +2,7 @@
 #include <memory>
 #include "Venigma.h"
 #include "verilated.h"
+#include "verilated_cov.h" 
 
 const char plaintext[26] = { 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z' };
  
@@ -180,4 +181,5 @@ int main(int argc, char **argv, char **env)
 		}
 		top->i_clock ^= 1; top->eval();
 	}
+	VerilatedCov::write("vlt_coverage.dat");
 }
