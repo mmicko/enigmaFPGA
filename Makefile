@@ -7,6 +7,8 @@ blackice: enigma_bi.bin
 test: enigma.out
 	vvp enigma.out
 	covered report cov.cdd
+	python3 cdd_2_lcov.py cov.cdd > coverage.info
+	genhtml coverage.info --output-directory coverage_html
 
 testrotor: rotor.out
 	vvp rotor.out
