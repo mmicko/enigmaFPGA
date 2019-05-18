@@ -173,8 +173,11 @@ for line in content:
         if op not in [EXP_OP_STATIC, EXP_OP_SIG, EXP_OP_PARAM, EXP_OP_PARAM_SBIT, EXP_OP_PARAM_MBIT, EXP_OP_DELAY, EXP_OP_CASE, EXP_OP_CASEX,EXP_OP_CASEZ,EXP_OP_DEFAULT,EXP_OP_NB_CALL,EXP_OP_FORK,EXP_OP_JOIN,EXP_OP_NOOP,EXP_OP_FOREVER,EXP_OP_RASSIGN]:
             if (lineno!=0):
                 if not (lineno in coverage[filename]):
-                    coverage[filename][lineno] = 0    
-                coverage[filename][lineno] += exec_num
+                    coverage[filename][lineno] = dict()    
+                if not (op in coverage[filename][lineno]):
+                    coverage[filename][lineno][op] = 0 
+                
+                coverage[filename][lineno][op] += exec_num
 
 print("TN:")
 for filename in sorted(coverage.keys()):
@@ -182,8 +185,10 @@ for filename in sorted(coverage.keys()):
     file_coverage = coverage[filename]
     lines_covered = 0
     for lineno in sorted(file_coverage.keys()):
-        print("DA:%d,%d" % (lineno, file_coverage[lineno]))
-        if file_coverage[lineno]!=0:
+        if (0 in iter(file_coverage[lineno].values())):
+            print("DA:%d,%d" % (lineno,0))
+        else:
+            print("DA:%d,%d" % (lineno,sum(file_coverage[lineno].values())))
             lines_covered+=1
     print("LF:%d" % len(file_coverage))
     print("LH:%d" % lines_covered)
